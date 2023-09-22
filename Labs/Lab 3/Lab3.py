@@ -3,6 +3,19 @@ import numpy as np
 from bisection import bisection
 from fixedpt import fixedpt
 
+def drivertest():
+	#f = lambda x: x**9 - 45*x**8 + 900*x**7 - 10500*x**6 + 78750*x**5 - 393750*x**4 + 1312500*x**3 - 2812500*x**2 + 3515625*x - 1953125
+	f = lambda x: x**3+x-4
+	a = 1
+	b = 4
+	tol = 1e-3
+	[astar,ier] = bisection(f,a,b,tol)
+	print('the approximate root is',astar)
+	print('the error message reads:',ier)
+	print('\nf(astar) =', f(astar))
+
+drivertest()
+
 def driver():
 	# use routines
 	f = lambda x: x**2*(x-1)
@@ -118,5 +131,5 @@ def driver3():
 	print('Error message reads:',ier)
 
 
-driver3()
+#driver3()
 
