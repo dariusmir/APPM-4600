@@ -2,6 +2,7 @@ import numpy as np
 import numpy.linalg as la
 import math
 
+#Matrix Multiplication Test
 def driver():
 	A  = np.matrix([[3, 4], [5, 6]])
 
