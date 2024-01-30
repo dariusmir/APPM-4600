@@ -26,6 +26,7 @@ def driver():
 		print(x)
 	return
 
+#Function for finding the dot product
 def dotProduct(x,y,n):
 	dp = 0.
 	for j in range(n):
