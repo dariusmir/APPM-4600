@@ -2,6 +2,7 @@ import numpy as np
 import numpy.linalg as la
 import math
 
+
 def driver():
 
      n = 100
@@ -31,7 +32,8 @@ def driver():
      print('the orthogonal dot product is: ', dpO)
 
      return
-     
+   
+#Function for finding the dot product  
 def dotProduct(x,y,n):
 
      dp = 0.
