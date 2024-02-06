@@ -67,16 +67,4 @@ def bisection(f,a,b,tol,Nmax):
     ier = 2
     return [astar,ier] 
 
-# use routines    
-f = lambda x: x**3+x-4
-a = 1
-b = 4
-
-Nmax = 100
-tol = 1e-3
-
-[astar,ier] = bisection(f,a,b,tol,Nmax)
-print('the approximate root is',astar)
-print('the error message reads:',ier)
-
 
