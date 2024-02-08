@@ -25,8 +25,9 @@ def PartB():
 	ytheta = R*(1+delR*np.sin(f*theta+p))*np.sin(theta)
 
 	plt.plot(xtheta, ytheta)
-	plt.show()
 	plt.savefig('4b1')
+	plt.show()
+	
 
 	p  = np.random.uniform(0,2,1)
 	delR = 0.05
@@ -38,8 +39,9 @@ def PartB():
 		ytheta = R*(1+delR*np.sin(f*theta+p))*np.sin(theta)
 		plt.plot(xtheta, ytheta)
 
-	plt.show()
 	plt.savefig('4b2')
+	plt.show()
+
 
 PartB()
 
