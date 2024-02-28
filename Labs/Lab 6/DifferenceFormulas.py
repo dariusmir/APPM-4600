@@ -5,7 +5,9 @@ h = 0.01 * 2.**(-np.arange(0,10))
 
 s = np.pi/2
 fd = (f(s + h) - f(s)) / h
-print(fd[-1])
+print(fd)
 
 cd = (f(s + h) - f(s - h))/(2 * h)
-print(cd[-1])
+print(cd)
+
+print('Both have linear orders of convergence')
