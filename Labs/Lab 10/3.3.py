@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy.linalg as la
 import math
 from scipy.integrate import quad
+from eval_chebychev import eval_chebychev
 
 
 def driver():
@@ -31,22 +32,16 @@ def driver():
     for kk in range(N + 1):
         fex[kk] = f(xeval[kk])
 
-    plt.figure()
-    plt.plot(xeval, fex, "r-", label="f(x)")
-    plt.plot(xeval, pval, "b--", label="Expansion")
-    plt.suptitle(
-        "Chebychev Expansion approximation of $f(x)= \\frac{1}{1+x^2}$ on $[-1,1]$"
-    )
-    plt.title("order {}".format(n))
+    plt.plot(xeval, fex, label='True function')
+    plt.plot(xeval, pval, label='Approximation')
+    plt.title('Chebychev f(x) = 1/(1+x^2), w(x) = 1/sqrt(1-x^2)')
     plt.legend()
-    plt.show
 
+    err = abs(pval-fex)
     plt.figure()
-    err = abs(pval - fex)
-    plt.semilogy(xeval, err, "r--", label="error")
-    plt.title("Error")
-    plt.legend()
-    plt.show()
+    plt.semilogy(xeval, err)
+    plt.title('Chebychev f(x) = 1/(1+x^2), w(x) = 1/sqrt(1-x^2) Error')
+    plt.show()   
 
 
 def eval_chebychev_expansion(f, a, b, w, n, x):
@@ -72,20 +67,6 @@ def eval_chebychev_expansion(f, a, b, w, n, x):
         pval = pval + aj * p[j]
 
     return pval
-
-
-def eval_chebychev(n, x):
-
-    p = np.zeros(n + 1)
-    if n >= 0:
-        p[0] = 1
-    if n >= 1:
-        p[1] = x
-
-    for i in range(2, n + 1):
-        p[i] = 2 * x * p[i - 1] - p[i - 2]
-
-    return p
 
 
 if __name__ == "__main__":
