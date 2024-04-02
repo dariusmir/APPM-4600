@@ -13,38 +13,49 @@ def driver():
     
     
     ''' number of intervals'''
-    Nint = 3
-    xint = np.linspace(a,b,Nint+1)
-    yint = f(xint)
+    #Nint = 3
+    p1 = 2
+    p2 = 12
+    u = 1
+    plt.figure()
 
-    ''' create points you want to evaluate at'''
-    Neval = 100
-    xeval =  np.linspace(xint[0],xint[Nint],Neval+1)
+    for Nint in range(p1, p2):
+        xint = np.linspace(a,b,Nint+1)
+        yint = f(xint)
 
-    
-    
-    (M,C,D) = create_natural_spline(yint,xint,Nint)
-    
-    print('M =', M)
-#    print('C =', C)
-#    print('D=', D)
-    
-    yeval = eval_cubic_spline(xeval,Neval,xint,Nint,M,C,D)
-    
-#    print('yeval = ', yeval)
-    
-    ''' evaluate f at the evaluation points'''
-    fex = f(xeval)
+        ''' create points you want to evaluate at'''
+        Neval = 100
+        xeval =  np.linspace(xint[0],xint[Nint],Neval+1)
+
         
-    nerr = norm(fex-yeval)
-    print('nerr = ', nerr)
-    
-    plt.figure()    
-    plt.plot(xeval,fex,'ro-',label='exact function')
-    plt.plot(xeval,yeval,'bs--',label='natural spline') 
-    plt.legend
+        
+        (M,C,D) = create_natural_spline(yint,xint,Nint)
+        
+        print('M =', M)
+    #    print('C =', C)
+    #    print('D=', D)
+        
+        yeval = eval_cubic_spline(xeval,Neval,xint,Nint,M,C,D)
+        
+    #    print('yeval = ', yeval)
+        
+        ''' evaluate f at the evaluation points'''
+        fex = f(xeval)
+            
+        nerr = norm(fex-yeval)
+        print('nerr = ', nerr)
+        
+        plt.subplot(2, 5, u)  
+        plt.title('N = %i' % Nint)
+        plt.plot(xeval,fex,'ro-',label='exact function')
+        plt.plot(xeval,yeval,'bs--',label='natural spline') 
+        plt.legend
+        u = u + 1
+
     plt.show()
-     
+    
+
+
     err = abs(yeval-fex)
     plt.figure() 
     plt.semilogy(xeval,err,'ro--',label='absolute error')
@@ -79,7 +90,7 @@ def create_natural_spline(yint,xint,N):
 
     A[0][0] = 1
     A[N][N] = 1
-    
+
     for i in range(1, N):
         A[i][i - 1] = h[i - 1] / 6
         A[i][i] = (h[i] + h[i - 1]) / 3
