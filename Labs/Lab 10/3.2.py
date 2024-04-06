@@ -8,7 +8,7 @@ from eval_legendre import eval_legendre
 def driver():
 
 #  function you want to approximate
-    f = lambda x: 1 / (1+x**2)
+    f = lambda x: math.exp(x)
 
 # Interval of interest    
     a = -1
