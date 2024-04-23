@@ -16,7 +16,7 @@ def composite_simpson(a, b, f, N):
         result += 2 * f(a + k * h)
     return result * h / 3
 
-result_trap = composite_trapezoidal(0, 1, lambda x: x**2, 100)
-print(result_trap)
-result_simpson = composite_simpson(0, 1, lambda x: x**2, 100)
-print(result_simpson)
+# result_trap = composite_trapezoidal(0, 1, lambda x: x**2, 100)
+# print(result_trap)
+# result_simpson = composite_simpson(0, 1, lambda x: x**2, 100)
+# print(result_simpson)
